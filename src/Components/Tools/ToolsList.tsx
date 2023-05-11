@@ -10,9 +10,6 @@ import {
   rem,
 } from "@mantine/core";
 import {
-  IconGauge,
-  IconUser,
-  IconCookie,
   IconReceiptOff,
   IconCircleDotted,
   IconFileCode,

@@ -109,7 +109,7 @@ export default function Navbar({ links }: HeaderResponsiveProps) {
       className={cx(classes.link, {
         [classes.linkActive]: active === link.link,
       })}
-      onClick={(event) => {
+      onClick={() => {
         // event.preventDefault();
         setActive(link.link);
         close();

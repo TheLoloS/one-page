@@ -1,5 +1,4 @@
 import "./App.css";
-import About from "./Components/About/About";
 import Main from "./Components/Main/Main";
 import Navbar from "./Components/Navbar/Navbar";
 import Tools from "./Components/Tools/Tools";

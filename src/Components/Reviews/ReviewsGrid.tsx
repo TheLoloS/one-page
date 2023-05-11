@@ -1,4 +1,4 @@
-import { Grid, Skeleton, Container, Title } from "@mantine/core";
+import { Grid, Container, Title } from "@mantine/core";
 import {
   createStyles,
   Text,
