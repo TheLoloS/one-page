@@ -1,22 +1,22 @@
 import { useMantineTheme } from "@mantine/core";
-import ToolsList from "./ToolsList";
+import Form from "./Form";
 
-const Tools = () => {
+const Contact = () => {
   const theme = useMantineTheme();
   return (
     <div
+      id="Contact"
       style={{
         backgroundColor:
           theme.colorScheme === "dark"
             ? theme.colors.dark[6]
             : theme.colors.brown[0],
       }}
-      id="Tools"
-      className=" w-full bg-stone-50 py-16"
+      className="w-full bg-all-white flex justify-center items-center pt-16 pb-36"
     >
-      <ToolsList />
+      <Form />
     </div>
   );
 };
 
-export default Tools;
+export default Contact;

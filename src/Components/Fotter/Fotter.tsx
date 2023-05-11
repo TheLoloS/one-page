@@ -1,9 +1,11 @@
-import React from "react";
+import FooterContent from "./FotterContent";
 
-type Props = {};
-
-const Fotter = (props: Props) => {
-  return <div className="h-[50dvh] bg-all-emerald-800">Fotter</div>;
+const Fotter = () => {
+  return (
+    <div className=" w-full ">
+      <FooterContent data={[{ title: "Thls" }]} />
+    </div>
+  );
 };
 
 export default Fotter;

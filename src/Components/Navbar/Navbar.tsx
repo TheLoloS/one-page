@@ -9,16 +9,16 @@ import {
   Transition,
   rem,
 } from "@mantine/core";
-import { useDisclosure, useScrollIntoView } from "@mantine/hooks";
+import { useDisclosure } from "@mantine/hooks";
 import { IconScissorsOff } from "@tabler/icons-react";
+import ThemeToggle from "./ThemeToggle";
 
 const HEADER_HEIGHT = rem(60);
 
 const useStyles = createStyles((theme) => ({
   root: {
     position: "fixed",
-    zIndex: 1000,
-    width: "100dvw",
+    zIndex: 100000,
   },
 
   dropdown: {
@@ -73,7 +73,7 @@ const useStyles = createStyles((theme) => ({
       backgroundColor:
         theme.colorScheme === "dark"
           ? theme.colors.dark[6]
-          : theme.colors.gray[0],
+          : theme.colors.brown[0],
     },
 
     [theme.fn.smallerThan("sm")]: {
@@ -84,12 +84,11 @@ const useStyles = createStyles((theme) => ({
 
   linkActive: {
     "&, &:hover": {
-      backgroundColor: theme.fn.variant({
-        variant: "light",
-        color: theme.primaryColor,
-      }).background,
-      color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
-        .color,
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.brown[0],
+      color: theme.colorScheme === "dark" ? theme.white : theme.colors.brown[9],
     },
   },
 }));
@@ -124,6 +123,8 @@ export default function Navbar({ links }: HeaderResponsiveProps) {
     <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
       <Container className={classes.header}>
         <IconScissorsOff size={28} />
+        <p className="pl-4">Kuki</p>
+        <ThemeToggle />
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>

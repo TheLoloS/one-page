@@ -1,22 +1,24 @@
-import React, {
-  ForwardedRef,
-  LegacyRef,
-  useImperativeHandle,
-  useRef,
-} from "react";
+import { useMantineTheme } from "@mantine/core";
+import Features from "./Features";
 
-type ButtonProps = React.HTMLProps<HTMLDivElement>;
-
-const About = React.forwardRef<HTMLDivElement, ButtonProps>((props, ref) => {
+const About = () => {
+  const theme = useMantineTheme();
   return (
     <div
-      ref={ref}
       id="About"
-      className=" h-[100dvh] w-full z-10 bg-all-green-600"
+      style={{
+        backgroundColor:
+          theme.colorScheme === "dark"
+            ? theme.colors.dark[6]
+            : theme.colors.brown[0],
+      }}
+      className="w-full overflow-hidden z-10 min-h-[40vh] bg-all-white flex justify-center items-center py-16"
     >
-      About
+      <div className="max-w-[70rem] my-10">
+        <Features />
+      </div>
     </div>
   );
-});
+};
 
 export default About;

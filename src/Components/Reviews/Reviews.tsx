@@ -1,11 +1,20 @@
-import React from "react";
+import { useMantineTheme } from "@mantine/core";
+import ReviewsGrid from "./ReviewsGrid";
 
-type Props = {};
-
-const Reviews = (props: Props) => {
+const Reviews = () => {
+  const theme = useMantineTheme();
   return (
-    <div id="Reviews" className="h-[100dvh] bg-yellow-500">
-      Reviews
+    <div
+      style={{
+        backgroundColor:
+          theme.colorScheme === "dark"
+            ? theme.colors.dark[6]
+            : theme.colors.brown[0],
+      }}
+      id="Reviews"
+      className=" w-full bg-stone-50 py-16"
+    >
+      <ReviewsGrid />
     </div>
   );
 };
