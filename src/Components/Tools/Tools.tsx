@@ -12,7 +12,7 @@ const Tools = () => {
             : theme.colors.brown[0],
       }}
       id="Tools"
-      className=" w-full bg-stone-50 py-16"
+      className=" w-full bg-stone-50 py-16 border-t-2 border-all-white z-20"
     >
       <ToolsList />
     </div>

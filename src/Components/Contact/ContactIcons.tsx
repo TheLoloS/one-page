@@ -10,37 +10,27 @@ import { IconSun, IconPhone, IconMapPin, IconAt } from "@tabler/icons-react";
 
 type ContactIconVariant = "white" | "gradient";
 
-interface ContactIconStyles {
-  variant: ContactIconVariant;
-}
-
-const useStyles = createStyles((theme, { variant }: ContactIconStyles) => ({
+const useStyles = createStyles((theme) => ({
   wrapper: {
     display: "flex",
     alignItems: "center",
-    color: theme.white,
+    color: theme.colorScheme === "dark" ? theme.white : theme.colors.brown[9],
   },
 
   icon: {
     marginRight: theme.spacing.md,
     backgroundImage:
-      variant === "gradient"
-        ? `linear-gradient(135deg, ${theme.colors[theme.primaryColor][4]} 0%, ${
-            theme.colors[theme.primaryColor][6]
-          } 100%)`
-        : "none",
-    backgroundColor: "transparent",
+      theme.colorScheme === "dark" ? theme.white : theme.colors.brown[9],
+    backgroundColor:
+      theme.colorScheme === "dark" ? theme.white : theme.colors.brown[9],
   },
 
   title: {
-    color:
-      variant === "gradient"
-        ? theme.colors.gray[6]
-        : theme.colors[theme.primaryColor][0],
+    color: theme.colorScheme === "dark" ? theme.white : theme.colors.brown[9],
   },
 
   description: {
-    color: variant === "gradient" ? theme.black : theme.white,
+    color: theme.colorScheme === "dark" ? theme.white : theme.colors.brown[9],
   },
 }));
 
@@ -60,7 +50,7 @@ function ContactIcon({
   className,
   ...others
 }: ContactIconProps) {
-  const { classes, cx } = useStyles({ variant });
+  const { classes, cx } = useStyles();
   return (
     <div className={cx(classes.wrapper, className)} {...others}>
       {variant === "gradient" ? (
@@ -107,7 +97,11 @@ export function ContactIconsList({
 
 export function ContactIcons() {
   return (
-    <SimpleGrid cols={2} breakpoints={[{ maxWidth: 755, cols: 1 }]}>
+    <SimpleGrid
+      cols={2}
+      breakpoints={[{ maxWidth: 755, cols: 1 }]}
+      className="relative"
+    >
       <Box
         sx={(theme) => ({
           padding: theme.spacing.xl,

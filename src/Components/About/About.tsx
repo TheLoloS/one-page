@@ -12,7 +12,7 @@ const About = () => {
             ? theme.colors.dark[6]
             : theme.colors.brown[0],
       }}
-      className="w-full overflow-hidden z-10 min-h-[40vh] bg-all-white flex justify-center items-center py-16"
+      className="w-full overflow-hidden z-10 min-h-[40vh] bg-all-white flex justify-center items-center py-16 "
     >
       <div className="max-w-[70rem] my-10">
         <Features />

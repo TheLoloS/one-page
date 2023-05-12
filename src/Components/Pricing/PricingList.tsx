@@ -22,36 +22,42 @@ export const MOCKDATA = [
     title: "Przycinanie",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolore nulla, aperiam, nihil mollitia ab architecto.",
+    price: "20.00 zł",
   },
   {
     icon: IconUser,
     title: "Farbowanie",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolore nulla, aperiam, nihil mollitia ab architecto.",
+    price: "40.00 zł",
   },
   {
     icon: IconCookie,
     title: "Strzyzenie brody",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolore nulla, aperiam, nihil mollitia ab architecto.",
+    price: "20.00 zł",
   },
   {
     icon: IconLock,
     title: "Podcinanie",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolore nulla, aperiam, nihil mollitia ab architecto.",
+    price: "25.00 zł",
   },
   {
     icon: IconMessage2,
     title: "Mycie włosów",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolore nulla, aperiam, nihil mollitia ab architecto.",
+    price: "20.00 zł",
   },
   {
     icon: IconMessage2,
     title: "Stylizacja",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolore nulla, aperiam, nihil mollitia ab architecto.",
+    price: "30.00 zł",
   },
 ];
 
@@ -59,9 +65,15 @@ interface FeatureProps {
   icon: React.FC<any>;
   title: React.ReactNode;
   description: React.ReactNode;
+  price: React.ReactNode;
 }
 
-export function Feature({ icon: Icon, title, description }: FeatureProps) {
+export function Feature({
+  icon: Icon,
+  title,
+  description,
+  price,
+}: FeatureProps) {
   const theme = useMantineTheme();
   return (
     <div
@@ -87,7 +99,7 @@ export function Feature({ icon: Icon, title, description }: FeatureProps) {
       <Text size="sm" color="dimmed" sx={{ lineHeight: 1.6 }}>
         {description}
       </Text>
-      <div className="flex items-center justify-end">1.00$</div>
+      <div className="flex items-center justify-end">{price}</div>
     </div>
   );
 }
@@ -96,6 +108,7 @@ const useStyles = createStyles((theme) => ({
   wrapper: {
     paddingTop: `calc(${theme.spacing.xl} * 4)`,
     paddingBottom: `calc(${theme.spacing.xl} * 4)`,
+    position: "relative",
   },
 
   title: {

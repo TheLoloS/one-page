@@ -13,6 +13,8 @@ import {
   MantineProvider,
 } from "@mantine/core";
 import { Tuple, DefaultMantineColor } from "@mantine/core";
+import LocationMaps from "./Components/LocationMaps/LocationMaps";
+import ParticlesBg from "./Components/Background/Background";
 
 type ExtendedCustomColors =
   | "brown"
@@ -38,10 +40,10 @@ function App() {
 
   const Links = [
     { link: "#Main", label: "Główna" },
-    { link: "#About", label: "O nas" },
-    { link: "#Tools", label: "Narzędzia" },
+    { link: "#Tools", label: "O nas" },
     { link: "#Reviews", label: "Opinie" },
     { link: "#Pricing", label: "Cennik" },
+    { link: "#Map", label: "Lokalizacja" },
     { link: "#Contact", label: "Kontakt" },
   ];
   const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
@@ -73,12 +75,14 @@ function App() {
         withGlobalStyles
         withNormalizeCSS
       >
+        <ParticlesBg />
         <Navbar links={Links} />
         <Main />
         {/* <About /> */}
         <Tools />
         <Reviews />
         <Pricing />
+        <LocationMaps />
         <Contact />
         <Fotter />
       </MantineProvider>

@@ -144,7 +144,7 @@ export function CommentHtml({ postedAt, body, author }: CommentHtmlProps) {
 export default function ReviewsGrid() {
   const { classes } = useStyles();
   return (
-    <Container my="md">
+    <Container my="md" className="relative">
       <Title order={2} className={classes.title} ta="center" mt="sm">
         Opinie
       </Title>

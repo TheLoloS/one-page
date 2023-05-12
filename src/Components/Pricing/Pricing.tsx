@@ -12,7 +12,7 @@ const Pricing = () => {
             ? theme.colors.dark[6]
             : theme.colors.brown[0],
       }}
-      className="w-full bg-all-white flex justify-center items-center py-16"
+      className="w-full bg-all-white flex justify-center items-center py-16 z-20"
     >
       <PricingList
         title="Cennik"

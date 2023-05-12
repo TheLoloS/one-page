@@ -21,6 +21,7 @@ const useStyles = createStyles((theme) => ({
   wrapper: {
     minHeight: 400,
     boxSizing: "border-box",
+    position: "relative",
 
     borderRadius: theme.radius.md,
     padding: `calc(${theme.spacing.xl} * 2.5)`,
@@ -32,12 +33,12 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    color: theme.white,
+    color: theme.colorScheme === "dark" ? theme.white : theme.colors.brown[9],
     lineHeight: 1,
   },
 
   description: {
-    color: theme.colors[theme.primaryColor][0],
+    color: theme.colorScheme === "dark" ? theme.white : theme.colors.brown[9],
     maxWidth: rem(300),
 
     [theme.fn.smallerThan("sm")]: {
@@ -57,7 +58,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   social: {
-    color: theme.white,
+    color: theme.colorScheme === "dark" ? theme.white : theme.colors.brown[9],
 
     "&:hover": {
       color: theme.colors[theme.primaryColor][1],
@@ -117,7 +118,7 @@ export default function Form() {
         breakpoints={[{ maxWidth: "sm", cols: 1 }]}
       >
         <div className={classes.formData}>
-          <Title className={classes.title}>Skontaktuj się z nami</Title>
+          <Title className={classes.title}>Kontaktuj</Title>
           <Text className={classes.description} mt="sm" mb={30}>
             Napisz do nas a odpowiemy do 24 godzin!
           </Text>
