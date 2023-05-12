@@ -55,7 +55,7 @@ const LocationMaps = () => {
         width="600"
         height="450"
         loading="lazy"
-        className="relative"
+        className="relative max-w-[80vw]"
       ></iframe>
     </div>
   );
