@@ -5,16 +5,16 @@ import Tools from "./Components/Tools/Tools";
 import Pricing from "./Components/Pricing/Pricing";
 import Fotter from "./Components/Fotter/Fotter";
 import Reviews from "./Components/Reviews/Reviews";
-import { useState } from "react";
 import Contact from "./Components/Contact/Contact";
 import {
-  ColorScheme,
-  ColorSchemeProvider,
   MantineProvider,
+  ColorSchemeProvider,
+  ColorScheme,
 } from "@mantine/core";
 import { Tuple, DefaultMantineColor } from "@mantine/core";
 import LocationMaps from "./Components/LocationMaps/LocationMaps";
 import ParticlesBg from "./Components/Background/Background";
+import { useColorScheme, useHotkeys, useLocalStorage } from "@mantine/hooks";
 
 type ExtendedCustomColors =
   | "brown"
@@ -46,9 +46,20 @@ function App() {
     { link: "#Map", label: "Lokalizacja" },
     { link: "#Contact", label: "Kontakt" },
   ];
-  const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
+
+  const preferredColorScheme = useColorScheme();
+  console.log(preferredColorScheme);
+
+  const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
+    key: "mantine-color-scheme",
+    defaultValue: preferredColorScheme,
+    getInitialValueInEffect: true,
+  });
+
   const toggleColorScheme = (value?: ColorScheme) =>
-    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+    setColorScheme(value || (colorScheme === "light" ? "dark" : "light"));
+
+  useHotkeys([["mod+J", () => toggleColorScheme()]]);
   return (
     <ColorSchemeProvider
       colorScheme={colorScheme}

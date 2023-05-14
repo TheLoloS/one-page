@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   createStyles,
   Header,
@@ -102,6 +102,23 @@ export default function Navbar({ links }: HeaderResponsiveProps) {
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
+  useEffect(() => {
+    window.onscroll = () => scrollListener();
+
+    function scrollListener() {
+      const mainDivs = [...document.querySelectorAll("#root > div")];
+      for (var i = 1; i < mainDivs.length; i++) {
+        const a = mainDivs[i].getBoundingClientRect().top;
+        if (a <= -mainDivs[i].getBoundingClientRect().height / 2 && a < 0) {
+          continue;
+        } else {
+          setActive("#" + mainDivs[i].id);
+          return;
+        }
+      }
+    }
+  }, []);
+
   const items = links.map((link) => (
     <a
       key={link.label}
@@ -110,6 +127,7 @@ export default function Navbar({ links }: HeaderResponsiveProps) {
         [classes.linkActive]: active === link.link,
       })}
       onClick={() => {
+        console.log(link.link);
         // event.preventDefault();
         setActive(link.link);
         close();

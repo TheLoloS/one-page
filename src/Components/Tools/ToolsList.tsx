@@ -35,12 +35,12 @@ const mockdata = [
     description:
       " Uważamy, że każdy klient jest wyjątkowy i ma swoje indywidualne potrzeby. Dlatego dokładnie słuchamy Twoich oczekiwań i dostosowujemy nasze usługi do Twoich preferencji. Chcemy, abyś opuścił nasz salon z uśmiechem na twarzy i poczuciem spełnienia.",
   },
-  {
-    icon: IconFlame,
-    title: "Trendy i nowatorskie podejście",
-    description:
-      "W naszym salonie jesteśmy na bieżąco z najnowszymi trendami i nowinkami w świecie fryzjerstwa. Śmiało eksperymentujemy z nowymi technikami i produktami, aby dostarczyć Ci nowatorskie rozwiązania i stylowe fryzury, które podkreślą Twoją wyjątkowość.",
-  },
+  // {
+  //   icon: IconFlame,
+  //   title: "Trendy i nowatorskie podejście",
+  //   description:
+  //     "W naszym salonie jesteśmy na bieżąco z najnowszymi trendami i nowinkami w świecie fryzjerstwa. Śmiało eksperymentujemy z nowymi technikami i produktami, aby dostarczyć Ci nowatorskie rozwiązania i stylowe fryzury, które podkreślą Twoją wyjątkowość.",
+  // },
 ];
 
 const useStyles = createStyles((theme) => ({

@@ -1,6 +1,5 @@
 import {
   createStyles,
-  Overlay,
   Container,
   Title,
   Button,
@@ -11,7 +10,6 @@ import {
 const useStyles = createStyles((theme) => ({
   hero: {
     position: "absolute",
-    backgroundColor: theme.white,
   },
 
   container: {
@@ -79,11 +77,6 @@ export default function MainText() {
 
   return (
     <div className={classes.hero}>
-      <Overlay
-        gradient="linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .65) 40%)"
-        opacity={1}
-        zIndex={0}
-      />
       <Container className={classes.container}>
         <Title className={classes.title}>Kuki</Title>
         <Text className={classes.description} size="xl" mt="xl">
