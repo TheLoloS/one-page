@@ -14,7 +14,8 @@ import {
 import { Tuple, DefaultMantineColor } from "@mantine/core";
 import LocationMaps from "./Components/LocationMaps/LocationMaps";
 import ParticlesBg from "./Components/Background/Background";
-import { useColorScheme, useHotkeys, useLocalStorage } from "@mantine/hooks";
+import { useColorScheme, useLocalStorage } from "@mantine/hooks";
+import { Cookies } from "./Components/Cookies/Cookies";
 
 type ExtendedCustomColors =
   | "brown"
@@ -28,6 +29,12 @@ declare module "@mantine/core" {
 }
 
 function App() {
+  const colorSchemeDefault = useColorScheme("dark", {
+    getInitialValueInEffect: true,
+  });
+
+  //
+  console.log("a");
   // const AboutRef = useRef<HTMLDivElement>(null);
   // const MainRef = useRef<() => JSX.Element>(null);
   // const ToolsRef = useRef<HTMLDivElement | null>(null);
@@ -47,19 +54,19 @@ function App() {
     { link: "#Contact", label: "Kontakt" },
   ];
 
-  const preferredColorScheme = useColorScheme();
-  console.log(preferredColorScheme);
-
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: "mantine-color-scheme",
-    defaultValue: preferredColorScheme,
+    defaultValue: colorSchemeDefault,
+
     getInitialValueInEffect: true,
   });
+
+  // ? Fix mantine start bug (theme dont set what you have in you system witout it)
 
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "light" ? "dark" : "light"));
 
-  useHotkeys([["mod+J", () => toggleColorScheme()]]);
+  // useHotkeys([["mod+J", () => toggleColorScheme()]]);
   return (
     <ColorSchemeProvider
       colorScheme={colorScheme}
@@ -86,6 +93,7 @@ function App() {
         withGlobalStyles
         withNormalizeCSS
       >
+        <Cookies />
         <ParticlesBg />
         <Navbar links={Links} />
         <Main />

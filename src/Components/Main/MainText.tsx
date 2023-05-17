@@ -1,11 +1,5 @@
-import {
-  createStyles,
-  Container,
-  Title,
-  Button,
-  Text,
-  rem,
-} from "@mantine/core";
+import { createStyles, Container, rem } from "@mantine/core";
+import { motion } from "framer-motion";
 
 const useStyles = createStyles((theme) => ({
   hero: {
@@ -64,11 +58,16 @@ const useStyles = createStyles((theme) => ({
   },
 
   control: {
-    marginTop: `calc(${theme.spacing.xl} * 1.5)`,
+    color: theme.white,
+    marginTop: `calc(${theme.spacing.xl} * 2)`,
+    fontSize: theme.fontSizes.lg,
 
     [theme.fn.smallerThan("sm")]: {
       width: "100%",
     },
+  },
+  arrow: {
+    fontSize: theme.fontSizes.xl,
   },
 }));
 
@@ -76,27 +75,46 @@ export default function MainText() {
   const { classes } = useStyles();
 
   return (
-    <div className={classes.hero}>
+    <motion.div className="absolute">
       <Container className={classes.container}>
-        <Title className={classes.title}>Kuki</Title>
-        <Text className={classes.description} size="xl" mt="xl">
+        <motion.p
+          initial={{ x: -200 }}
+          animate={{ x: 0 }}
+          transition={{ delay: 1 }}
+          className={classes.title}
+        >
+          Kuki
+        </motion.p>
+        <motion.p
+          initial={{ x: -200 }}
+          animate={{ x: 0 }}
+          transition={{ delay: 1 }}
+          className={classes.description}
+        >
           Witaj w naszym salonie fryzjerskim! Jesteśmy doświadczoną ekipą
           stylistów, gotową uczynić Twoje włosy nieodpartywym elementem Twojego
           wyglądu. Oferujemy szeroki zakres usług, od klasycznych cięć i
           koloryzacji po najnowsze trendy w świecie fryzjerstwa. Nasze
           zaangażowanie, kreatywność i indywidualne podejście sprawią, że
           poczujesz się pewnie i pięknie
-        </Text>
+        </motion.p>
 
-        <Button
-          variant="gradient"
-          size="xl"
-          radius="xl"
+        <motion.button
+          initial={{ scale: 1 }}
+          animate={{ scale: 1.1 }}
+          transition={{
+            repeatType: "reverse",
+            repeat: Infinity,
+            duration: 0.5,
+          }}
           className={classes.control}
+          onClick={() => {
+            document.getElementById("Tools")?.scrollIntoView();
+          }}
         >
-          Zaczynajmy!
-        </Button>
+          Zaczynajmy <b className={classes.arrow}>⬇</b>
+        </motion.button>
       </Container>
-    </div>
+    </motion.div>
   );
 }

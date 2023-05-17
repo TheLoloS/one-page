@@ -26,7 +26,7 @@ export default function ParticlesBg() {
       id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}
-      className="z-10"
+      className="z-0 absolute"
       options={{
         name: "Twinkle",
         particles: {

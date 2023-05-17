@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   createStyles,
   Header,
@@ -10,8 +10,9 @@ import {
   rem,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconScissorsOff } from "@tabler/icons-react";
+// import { IconScissorsOff } from "@tabler/icons-react";
 import ThemeToggle from "./ThemeToggle";
+import { motion } from "framer-motion";
 
 const HEADER_HEIGHT = rem(60);
 
@@ -30,7 +31,6 @@ const useStyles = createStyles((theme) => ({
     borderTopRightRadius: 0,
     borderTopLeftRadius: 0,
     borderTopWidth: 0,
-    overflow: "hidden",
 
     [theme.fn.largerThan("sm")]: {
       display: "none",
@@ -58,6 +58,7 @@ const useStyles = createStyles((theme) => ({
 
   link: {
     display: "block",
+    overflow: "hidden",
     lineHeight: 1,
     padding: `${rem(8)} ${rem(12)}`,
     borderRadius: theme.radius.sm,
@@ -102,25 +103,30 @@ export default function Navbar({ links }: HeaderResponsiveProps) {
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
-  useEffect(() => {
-    window.onscroll = () => scrollListener();
+  // useEffect(() => {
+  //   window.onscroll = () => scrollListener();
 
-    function scrollListener() {
-      const mainDivs = [...document.querySelectorAll("#root > div")];
-      for (var i = 1; i < mainDivs.length; i++) {
-        const a = mainDivs[i].getBoundingClientRect().top;
-        if (a <= -mainDivs[i].getBoundingClientRect().height / 2 && a < 0) {
-          continue;
-        } else {
-          setActive("#" + mainDivs[i].id);
-          return;
-        }
-      }
-    }
-  }, []);
+  //   function scrollListener() {
+  //     const mainDivs = [...document.querySelectorAll("#root > div")];
+  //     for (var i = 1; i < mainDivs.length; i++) {
+  //       const a = mainDivs[i].getBoundingClientRect().top;
+  //       if (a <= -mainDivs[i].getBoundingClientRect().height / 2 && a < 0) {
+  //         continue;
+  //       } else {
+  //         // if(mainDivs[i].id == );
 
-  const items = links.map((link) => (
-    <a
+  //         setActive("#" + mainDivs[i].id);
+  //         return;
+  //       }
+  //     }
+  //   }
+  // }, []);
+
+  const items = links.map((link, i) => (
+    <motion.a
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.3 + i * 0.2 }}
       key={link.label}
       href={link.link}
       className={cx(classes.link, {
@@ -134,14 +140,16 @@ export default function Navbar({ links }: HeaderResponsiveProps) {
       }}
     >
       {link.label}
-    </a>
+    </motion.a>
   ));
 
   return (
     <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
       <Container className={classes.header}>
-        <IconScissorsOff size={28} />
-        <p className="pl-4">Kuki</p>
+        {/* <IconScissorsOff size={28} /> */}
+        <p className="pl-4" onClick={() => window.scrollTo(0, 0)}>
+          Kuki
+        </p>
         <ThemeToggle />
         <Group spacing={5} className={classes.links}>
           {items}
