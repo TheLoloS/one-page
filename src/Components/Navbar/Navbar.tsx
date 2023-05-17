@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   createStyles,
   Header,
@@ -103,24 +103,24 @@ export default function Navbar({ links }: HeaderResponsiveProps) {
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
-  // useEffect(() => {
-  //   window.onscroll = () => scrollListener();
+  useEffect(() => {
+    window.onscroll = () => scrollListener();
 
-  //   function scrollListener() {
-  //     const mainDivs = [...document.querySelectorAll("#root > div")];
-  //     for (var i = 1; i < mainDivs.length; i++) {
-  //       const a = mainDivs[i].getBoundingClientRect().top;
-  //       if (a <= -mainDivs[i].getBoundingClientRect().height / 2 && a < 0) {
-  //         continue;
-  //       } else {
-  //         // if(mainDivs[i].id == );
+    function scrollListener() {
+      const mainDivs = [...document.querySelectorAll("#root > div")];
+      for (var i = 1; i < mainDivs.length; i++) {
+        const a = mainDivs[i].getBoundingClientRect().top;
+        if (a <= -mainDivs[i].getBoundingClientRect().height / 2 && a < 0) {
+          continue;
+        } else {
+          // if(mainDivs[i].id == );
 
-  //         setActive("#" + mainDivs[i].id);
-  //         return;
-  //       }
-  //     }
-  //   }
-  // }, []);
+          setActive("#" + mainDivs[i].id);
+          return;
+        }
+      }
+    }
+  }, []);
 
   const items = links.map((link, i) => (
     <motion.a
