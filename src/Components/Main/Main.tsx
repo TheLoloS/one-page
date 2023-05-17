@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import BackgroundImage from "../../assets/bg.webp";
 import MainText from "./MainText";
 import { motion } from "framer-motion";
